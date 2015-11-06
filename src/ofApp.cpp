@@ -128,8 +128,6 @@ void ofApp::setup(){
         tempAgent.setColor(round(ofRandom(1)) * 255);
         agents.push_back(tempAgent);
     }
-
-
 }
 
 //--------------------------------------------------------------
@@ -167,16 +165,14 @@ void ofApp::draw(){
             
             // turn toward mouse by averaging terrain and food source
             double avgAngle = (0.7 * mouseAngle + 0.3 * topoAngle) / 2;
-            
-
             agents[i].angleToward(avgAngle, 0.75); // low lerps are really interesting
             
+            // move forward a bit
             agents[i].forward(10);
             
             // wrap the agents
             agents[i].x = fmod(agents[i].x + ofGetWidth(), ofGetWidth());
             agents[i].y = fmod(agents[i].y + ofGetHeight(), ofGetHeight());
-            
         }
     }
     
